@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "@biomejs/biome": "1.7.1",
+    "esbuild": "^0.20.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "npx @biomejs/biome format --write src/",
+    "lint": "npx @biomejs/biome lint --apply src/",
+    "check": "npx @biomejs/biome check --apply src/",
+    "build": "npx esbuild src/main.js --bundle --format=esm --minify --outdir=dist/",
+    "watch": "npx esbuild src/main.js --bundle --format=esm --outdir=dist/ --watch --servedir=. --define:DEBUG=true"
+  }
+}
