@@ -1,4 +1,5 @@
-if (DEBUG) {
+/* @ts-ignore */
+if (window.DEBUG) {
 	new EventSource("/esbuild").addEventListener("change", () =>
 		location.reload(),
 	);
