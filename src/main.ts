@@ -13,8 +13,8 @@ const width = 10;
 
 let currentSnake = [2, 1, 0];
 let direction = 1;
-const score = 0;
-const intervalTime = 1000;
+let score = 0;
+const intervalTime = 800;
 let squares = grid.querySelectorAll("div");
 let interval = 0;
 
@@ -27,13 +27,13 @@ function resetGrid() {
 }
 
 function startGame() {
-	//TODO add apple
 	direction = 1;
 	scoreDisplay.innerText = `${score}`;
 	currentSnake = [2, 1, 0];
 	for (const idx of currentSnake) {
 		squares[idx].classList.add("snake");
 	}
+	randomApple();
 	interval = setInterval(stepGame, intervalTime);
 }
 
@@ -50,7 +50,17 @@ function moveSnake() {
 	const tail = currentSnake.pop();
 	squares[tail].classList.remove("snake");
 	currentSnake.unshift(currentSnake[0] + direction);
-	squares[currentSnake[0]].classList.add("snake");
+	const head = squares[currentSnake[0]];
+	head.classList.add("snake");
+	// check apple
+	if (head.classList.contains("apple")) {
+		head.classList.remove("apple");
+		score += 1;
+		scoreDisplay.innerText = `${score}`;
+		currentSnake.push(tail);
+		squares[tail].classList.add("snake");
+		randomApple();
+	}
 }
 
 function collision() {
@@ -64,6 +74,15 @@ function collision() {
 		return true;
 	}
 	return false;
+}
+
+function randomApple() {
+	const availableSquares = grid.querySelectorAll(
+		'div[class=""], div:not([class])',
+	);
+	const idx = Math.floor(Math.random() * availableSquares.length);
+
+	availableSquares[idx].classList.add("apple");
 }
 
 document.addEventListener("keydown", (event) => {
