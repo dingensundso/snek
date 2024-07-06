@@ -7,8 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "npx @biomejs/biome format --write src/",
-    "lint": "npx @biomejs/biome lint --apply src/ && npm run tsc",
-    "check": "npx @biomejs/biome check --apply src/ && npm run tsc",
+    "lint": "npx @biomejs/biome lint --write src/ && npm run tsc",
+    "check": "npx @biomejs/biome check --write src/ && npm run tsc",
     "tsc": "npx tsc -noEmit src/*.ts",
     "build": "npx esbuild src/main.ts --bundle --format=esm --minify --outdir=dist/ --define:window.DEBUG=false",
     "watch": "npx esbuild src/main.ts --bundle --format=esm --outdir=dist/ --watch --servedir=. --define:window.DEBUG=true"
