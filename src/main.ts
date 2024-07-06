@@ -12,7 +12,8 @@ const scoreDisplay = document.getElementById("score");
 const width = 10;
 
 let currentSnake = [2, 1, 0];
-let direction = 1;
+let direction = 0;
+let nextDirection = 1;
 let score = 0;
 const intervalTime = 800;
 let squares = grid.querySelectorAll("div");
@@ -27,7 +28,7 @@ function resetGrid() {
 }
 
 function startGame() {
-	direction = 1;
+	nextDirection = 1;
 	scoreDisplay.innerText = `${score}`;
 	currentSnake = [2, 1, 0];
 	for (const idx of currentSnake) {
@@ -38,6 +39,7 @@ function startGame() {
 }
 
 function stepGame() {
+	if (nextDirection !== -direction) direction = nextDirection;
 	if (collision()) {
 		console.log("YOU HIT SOMETHING");
 		clearInterval(interval);
@@ -92,16 +94,16 @@ document.addEventListener("keydown", (event) => {
 
 	switch (event.key) {
 		case "ArrowRight":
-			if (direction !== -1) direction = 1;
+			nextDirection = 1;
 			break;
 		case "ArrowLeft":
-			if (direction !== 1) direction = -1;
+			nextDirection = -1;
 			break;
 		case "ArrowDown":
-			if (direction !== -width) direction = width;
+			nextDirection = width;
 			break;
 		case "ArrowUp":
-			if (direction !== width) direction = -width;
+			nextDirection = -width;
 			break;
 	}
 });
