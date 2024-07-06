@@ -1,0 +1,25 @@
+#grid {
+	width: 200px;
+	height: 200px;
+	border: 1px solid black;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#grid div {
+	width: 20px;
+	height: 20px;
+}
+
+.snake {
+	background: black;
+}
+
+.apple::before {
+	content: '🍎';
+}
+
+.egg::before {
+	content: '🥚';
+}
