@@ -19,10 +19,7 @@
 	box-sizing: border-box;
 }
 
-.apple::before {
-	content: '🍎';
-}
-
-.egg::before {
-	content: '🥚';
+.apple {
+	background-image: url('../static/apple.png');
+	background-size: 100%;
 }
