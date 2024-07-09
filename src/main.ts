@@ -34,7 +34,6 @@ function resetGrid() {
 
 function startGame() {
 	nextDirection = 1;
-	scoreDisplay.innerText = `${score}`;
 	currentSnake = [2, 1, 0];
 	for (const idx of currentSnake) {
 		squares[idx].classList.add("snake");
@@ -62,7 +61,9 @@ function moveSnake() {
 	if (head.classList.contains("apple")) {
 		head.classList.remove("apple");
 		score += 1;
-		scoreDisplay.innerText = `${score}`;
+		grid.dispatchEvent(
+			new CustomEvent("scoreUpdate", { detail: score, bubbles: true }),
+		);
 		currentSnake.push(tail);
 		squares[tail].classList.add("snake");
 		randomApple();
@@ -99,7 +100,7 @@ function gameOver() {
 	popupText.innerText = "GAME OVER";
 	popup.appendChild(popupText);
 	grid.insertBefore(popup, grid.children[0]);
-	grid.dispatchEvent(new Event("gameOver"));
+	grid.dispatchEvent(new CustomEvent("gameOver", { bubbles: true }));
 }
 
 document.addEventListener("keydown", (event) => {
@@ -121,6 +122,10 @@ document.addEventListener("keydown", (event) => {
 			nextDirection = -width;
 			break;
 	}
+});
+
+document.addEventListener("scoreUpdate", (event: CustomEvent) => {
+	scoreDisplay.innerText = event.detail;
 });
 
 resetGrid();
