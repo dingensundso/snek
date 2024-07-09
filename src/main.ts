@@ -41,8 +41,7 @@ function startGame() {
 function stepGame() {
 	if (nextDirection !== -direction) direction = nextDirection;
 	if (collision()) {
-		console.log("YOU HIT SOMETHING");
-		clearInterval(interval);
+		gameOver();
 	} else {
 		moveSnake();
 	}
@@ -85,6 +84,17 @@ function randomApple() {
 	const idx = Math.floor(Math.random() * availableSquares.length);
 
 	availableSquares[idx].classList.add("apple");
+}
+
+function gameOver() {
+	clearInterval(interval);
+	const popup = document.createElement("div");
+	popup.classList.add("popup");
+	const popupText = document.createElement("span");
+	popupText.innerText = "GAME OVER";
+	popup.appendChild(popupText);
+	grid.insertBefore(popup, grid.children[0]);
+	grid.dispatchEvent(new Event("gameOver"));
 }
 
 document.addEventListener("keydown", (event) => {
