@@ -7,7 +7,7 @@ if (window.DEBUG) {
 	);
 }
 
-const grid = document.getElementById("grid");
+const games_div = document.getElementById("games");
 const scoreDisplay = document.getElementById("score");
 const width = 10;
 
@@ -16,8 +16,13 @@ let direction = 0;
 let nextDirection = 1;
 let score = 0;
 const intervalTime = 800;
-let squares = grid.querySelectorAll("div");
 let interval = 0;
+
+const grid = document.createElement("div");
+grid.classList.add("grid");
+games_div.appendChild(grid);
+
+let squares = grid.querySelectorAll("div");
 
 function resetGrid() {
 	grid.textContent = "";
