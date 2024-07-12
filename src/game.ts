@@ -3,7 +3,7 @@ export { SnakeGame };
 class SnakeGame {
 	width = 10;
 	currentSnake = [42, 41, 40];
-	direction = 0;
+	direction = 1;
 	nextDirection = 1;
 	score = 0;
 	intervalTime = 250;
