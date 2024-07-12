@@ -100,14 +100,14 @@ class SnakeGame {
 		}
 		if (this.currentSnake[0] % this.width === 0 && this.direction === -1) {
 			// left
-			this.direction = +(this.width - 1);
+			this.direction = this.width - 1;
 		}
 		if (
-			this.currentSnake[0] - this.width <= 0 &&
+			this.currentSnake[0] - this.width < 0 &&
 			this.direction === -this.width
 		) {
-			// up
-			this.direction = +this.width * (this.width - 1);
+			// top
+			this.direction = this.width * (this.width - 1);
 		}
 		if (
 			this.squares[this.currentSnake[0] + this.direction].classList.contains(
