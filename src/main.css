@@ -56,9 +56,3 @@ html,body {
 	justify-content: center;
 	align-items: center;
 }
-
-.grid div.popup span {
-	padding: .5em;
-	border: 2px solid black;
-	background-color: #fff;
-}

@@ -138,9 +138,6 @@ class SnakeGame {
 		clearInterval(this.interval);
 		const popup = document.createElement("div");
 		popup.classList.add("popup");
-		const popupText = document.createElement("span");
-		popupText.innerText = "GAME OVER";
-		popup.appendChild(popupText);
 		this.dom.insertBefore(popup, this.dom.children[0]);
 		this.dom.dispatchEvent(new CustomEvent("gameOver", { bubbles: true }));
 	}
