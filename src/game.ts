@@ -51,8 +51,12 @@ class SnakeGame {
 	}
 
 	stepGame() {
-		if (this.nextDirection !== -this.direction)
+		if (this.direction % 9 === 0) {
+			this.direction = -(this.direction / 9);
+		}
+		if (this.nextDirection !== -this.direction) {
 			this.direction = this.nextDirection;
+		}
 		if (this.collision) {
 			this.gameOver();
 		} else {
@@ -81,13 +85,31 @@ class SnakeGame {
 
 	get collision() {
 		if (
-			(this.currentSnake[0] + this.width >= this.width * this.width &&
-				this.direction === this.width) ||
-			(this.currentSnake[0] % this.width === this.width - 1 &&
-				this.direction === 1) ||
-			(this.currentSnake[0] % this.width === 0 && this.direction === -1) ||
-			(this.currentSnake[0] - this.width <= 0 &&
-				this.direction === -this.width) ||
+			this.currentSnake[0] + this.width >= this.width * this.width &&
+			this.direction === this.width
+		) {
+			// bottom
+			this.direction = -this.width * (this.width - 1);
+		}
+		if (
+			this.currentSnake[0] % this.width === this.width - 1 &&
+			this.direction === 1
+		) {
+			// right
+			this.direction = -(this.width - 1);
+		}
+		if (this.currentSnake[0] % this.width === 0 && this.direction === -1) {
+			// left
+			this.direction = +(this.width - 1);
+		}
+		if (
+			this.currentSnake[0] - this.width <= 0 &&
+			this.direction === -this.width
+		) {
+			// up
+			this.direction = +this.width * (this.width - 1);
+		}
+		if (
 			this.squares[this.currentSnake[0] + this.direction].classList.contains(
 				"snake",
 			)
