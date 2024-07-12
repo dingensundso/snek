@@ -17,7 +17,9 @@ html,body {
 	align-items: center;
 	align-content: center;
 	gap: 10px;
+	padding: 10px;
 }
+
 .grid {
 	max-width: 250px;
 	min-width: 100px;
@@ -28,6 +30,9 @@ html,body {
 	text-align: center;
 	position: relative;
 	flex-grow: 1;
+	flex-shrink: 0;
+	flex-basis: calc(20% - 10px);
+	transition: flex .5s;
 }
 
 .grid div {

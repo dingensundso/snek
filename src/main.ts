@@ -17,25 +17,33 @@ let intervalTime = 250;
 let gamesSpawned = 0;
 const maxGames = 25;
 
-function gameOver(game) {
-	const snake_length = game.querySelectorAll(".snake").length;
-	score -= Math.floor(snake_length / 2);
-	scoreDisplay.innerText = `${score}`;
-	games_div.removeChild(game);
-	if (games_div.children.length === 0) {
-		const el = document.createElement("h1");
-		el.innerText = "YOU LOST!";
-		games_div.appendChild(el);
-	}
-}
-
 function addGame() {
-	games_div.appendChild(new SnakeGame(intervalTime).dom);
+	const game = new SnakeGame(intervalTime);
+	game.dom.style["min-width"] = 0;
+	game.dom.style.flex = "0";
+	games_div.appendChild(game.dom);
+	setTimeout(() => {
+		game.dom.style["min-width"] = null;
+		game.dom.style.flex = null;
+	}, 10);
 	gamesSpawned++;
 }
 
 document.addEventListener("gameOver", (event: CustomEvent) => {
-	setTimeout(() => gameOver(event.target), 500);
+	const game = event.target as HTMLElement;
+	const snake_length = game.querySelectorAll(".snake").length;
+	score -= Math.floor(snake_length / 2);
+	scoreDisplay.innerText = `${score}`;
+	game.style["min-width"] = 0;
+	game.style.flex = "0";
+	setTimeout(() => {
+		games_div.removeChild(game);
+		if (games_div.children.length === 0) {
+			const el = document.createElement("h1");
+			el.innerText = "YOU LOST!";
+			games_div.appendChild(el);
+		}
+	}, 500);
 });
 
 document.addEventListener("scoreUpdate", (event: CustomEvent) => {
