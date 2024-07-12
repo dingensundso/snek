@@ -10,7 +10,7 @@
     "lint": "npx @biomejs/biome lint --write src/ && npm run tsc",
     "check": "npx @biomejs/biome check --write src/ && npm run tsc",
     "tsc": "npx tsc -noEmit src/*.ts",
-    "build": "npx esbuild src/main.ts --bundle --loader:.png=dataurl --format=esm --minify --outdir=dist/ --define:window.DEBUG=false",
+    "build": "npx esbuild src/main.ts --bundle --loader:.png=dataurl --format=esm --minify --outdir=dist/ --define:window.DEBUG=false && sed 's?dist/?./?g' index.html > dist/index.html",
     "watch": "npx esbuild src/main.ts --bundle --loader:.png=dataurl --format=esm --outdir=dist/ --watch --servedir=. --define:window.DEBUG=true"
   }
 }
