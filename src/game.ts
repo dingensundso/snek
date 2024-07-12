@@ -11,8 +11,8 @@ class SnakeGame {
 	dom: HTMLElement;
 	squares: NodeListOf<HTMLElement>;
 
-	constructor(width = 10) {
-		this.width = width;
+	constructor(intervalTime = 250) {
+		this.intervalTime = intervalTime;
 		this.dom = document.createElement("div");
 		this.dom.classList.add("grid");
 
@@ -21,6 +21,12 @@ class SnakeGame {
 		}
 		this.squares = this.dom.querySelectorAll("div");
 		this.startGame();
+
+		document.addEventListener("speedChange", (event: CustomEvent) => {
+			this.intervalTime = event.detail;
+			clearInterval(this.interval);
+			this.interval = setInterval(this.stepGame.bind(this), this.intervalTime);
+		});
 	}
 	startGame() {
 		document.addEventListener("keydown", (event) => {

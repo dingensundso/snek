@@ -13,6 +13,9 @@ const scoreDisplay = document.getElementById("score");
 
 let applesEaten = 0;
 let score = 0;
+let intervalTime = 250;
+let gamesSpawned = 1;
+const maxGames = 25;
 
 function gameOver(game) {
 	const snake_length = game.querySelectorAll(".snake").length;
@@ -36,7 +39,16 @@ document.addEventListener("scoreUpdate", (event: CustomEvent) => {
 	score += numGames;
 	scoreDisplay.innerText = `${score}`;
 	if (applesEaten % 3 === 0) {
-		games_div.appendChild(new SnakeGame().dom);
+		if (gamesSpawned < maxGames) {
+			games_div.appendChild(new SnakeGame(intervalTime).dom);
+			gamesSpawned++;
+		}
+		if (intervalTime > 50) {
+			intervalTime -= 10;
+			games_div.dispatchEvent(
+				new CustomEvent("speedChange", { detail: intervalTime, bubbles: true }),
+			);
+		}
 	}
 });
 
