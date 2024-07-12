@@ -4,6 +4,7 @@ html,body {
 	margin: 0;
 	position:absolute;
 	overflow: hidden;
+	background-color: #fff;
 }
 body {
 	font-family: sans-serif;
