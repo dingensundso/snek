@@ -2,11 +2,11 @@ export { SnakeGame };
 
 class SnakeGame {
 	width = 10;
-	currentSnake = [2, 1, 0];
+	currentSnake = [42, 41, 40];
 	direction = 0;
 	nextDirection = 1;
 	score = 0;
-	intervalTime = 800;
+	intervalTime = 250;
 	interval = 0;
 	dom: HTMLElement;
 	squares: NodeListOf<HTMLElement>;

@@ -1,12 +1,33 @@
+html,body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	position:absolute;
+	overflow: hidden;
+}
+#games {
+	position: absolute;
+	top:0;
+	left:0;
+	display: flex;
+	flex-wrap: wrap;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	gap: 10px;
+}
 .grid {
 	max-width: 250px;
+	min-width: 100px;
 	aspect-ratio: 1;
 	border: 1px solid black;
-	margin: 0 auto;
 	display: flex;
 	flex-wrap: wrap;
 	text-align: center;
 	position: relative;
+	flex-grow: 1;
 }
 
 .grid div {
