@@ -74,3 +74,19 @@ body {
 	border: 1px solid #ccc;
 	padding: 3px;
 }
+h1 {
+	width: 100%;
+	text-align: center;
+}
+button {
+	background-color: white;
+	border: 1px solid black;
+	padding: 15px;
+	font-size: 15pt;
+}
+button:hover {
+	background-color: #ccc;
+}
+button:active {
+	background-color: #666;
+}

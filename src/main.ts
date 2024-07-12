@@ -42,6 +42,7 @@ document.addEventListener("gameOver", (event: CustomEvent) => {
 			const el = document.createElement("h1");
 			el.innerText = "YOU LOST!";
 			games_div.appendChild(el);
+			addButton("Restart!");
 		}
 	}, 500);
 });
@@ -64,4 +65,19 @@ document.addEventListener("scoreUpdate", (event: CustomEvent) => {
 	}
 });
 
-addGame();
+function addButton(text) {
+	const button = document.createElement("button");
+	button.innerText = text;
+	button.addEventListener("click", (e) => {
+		applesEaten = 0;
+		score = 0;
+		intervalTime = 250;
+		gamesSpawned = 0;
+		scoreDisplay.innerText = `${score}`;
+		games_div.innerText = "";
+		addGame();
+	});
+	games_div.appendChild(button);
+}
+
+addButton("Start!");
