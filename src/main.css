@@ -52,7 +52,7 @@ body {
 }
 
 .apple {
-	background-image: url('../static/apple.png');
+	background-image: url('../assets/apple.png');
 	background-size: 100%;
 }
 
