@@ -1,6 +1,6 @@
 # Apple-Eating Danger Noodles
 
-*Apple-Eating* Danger Noodles is a action game based on the idea of the [famous 1998 video game *Snake*](https://en.wikipedia.org/wiki/Snake_(1998_video_game)).
+*Apple-Eating Danger Noodles* is a action game based on the idea of the [famous 1998 video game *Snake*](https://en.wikipedia.org/wiki/Snake_(1998_video_game)).
 
 This was my entry for the [Pizza Jam](https://itch.io/jam/pizza-jam-pizza-prize-12).
 
