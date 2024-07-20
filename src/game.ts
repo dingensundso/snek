@@ -36,15 +36,23 @@ class SnakeGame {
 
 			switch (event.key) {
 				case "ArrowRight":
+				case "d":
+				case "D":
 					this.nextDirection = 1;
 					break;
 				case "ArrowLeft":
+				case "a":
+				case "A":
 					this.nextDirection = -1;
 					break;
 				case "ArrowDown":
+				case "s":
+				case "S":
 					this.nextDirection = this.width;
 					break;
 				case "ArrowUp":
+				case "w":
+				case "W":
 					this.nextDirection = -this.width;
 					break;
 			}
